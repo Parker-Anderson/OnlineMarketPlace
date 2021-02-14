@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using OnlineMarketPlace.Data;
 using OnlineMarketPlace.WebAPI.Models;
 using OnlineMarketPlace.WebAPI.Providers;
 using OnlineMarketPlace.WebAPI.Results;
