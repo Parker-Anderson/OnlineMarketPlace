@@ -11,15 +11,6 @@ using System.Threading.Tasks;
 
 namespace OnlineMarketPlace.Data
 {
-    public enum ShoppingCategory
-    {
-        Clothing = 1,
-        Electronics,
-        Home,
-        Kids,
-        Outdoor,
-        Art
-    }
     public class Transaction
     {
 
