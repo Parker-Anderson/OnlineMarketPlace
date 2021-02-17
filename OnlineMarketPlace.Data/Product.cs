@@ -7,8 +7,19 @@ using System.Threading.Tasks;
 
 namespace OnlineMarketPlace.Data
 {
+    public enum ShoppingCategory
+    {
+        Clothing = 1,
+        Electronics,
+        Home,
+        Kids,
+        Outdoor,
+        Art
+    }
     public class Product
     {
+
+
         [Key]
         public int Id { get; set; }
 
@@ -21,5 +32,6 @@ namespace OnlineMarketPlace.Data
         //[ForeignKey(nameof(User)))]
         // public int UserId { get; set; }
         //public virtual User UserId {get; set;}
+
     }
 }
