@@ -11,31 +11,31 @@ using System.Web.Http;
 namespace OnlineMarketPlace.WebAPI.Controllers
 {
     [Authorize]
-    public class TransactionController : ApiController
+    public class ProductController : ApiController
     {
         public IHttpActionResult Get()
         {
-            TransactionService transactionService = CreateTransactionService();
-            var transaction = transactionService.GetTransaction();
-            return Ok(transaction);
+            ProductService productService = CreateProductService();
+            var product = productService.GetProduct();
+            return Ok(product);
         }
-        public IHttpActionResult Post(TransactionCreate transaction)
+        public IHttpActionResult Post(ProductCreate product)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateTransactionService();
+            var service = CreateProductService();
 
-            if (!service.CreateTransaction(transaction))
+            if (!service.CreateProduct(product))
                 return InternalServerError();
 
             return Ok();
         }
-        private TransactionService CreateTransactionService()
+        private ProductService CreateProductService()
         {
             var Id = int.Parse(User.Identity.GetUserId());
-            var transactionService = new TransactionService(Id);
-            return transactionService;
+            var productService = new ProductService(Id);
+            return productService;
         }
     }
 }

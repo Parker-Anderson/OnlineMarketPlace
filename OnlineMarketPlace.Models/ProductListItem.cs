@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineMarketPlace.Models
 {
-    public class TransactionListItem
+    public class ProductListItem
     {
         public int Id { get; set; }
         public string Name { get; set; }
