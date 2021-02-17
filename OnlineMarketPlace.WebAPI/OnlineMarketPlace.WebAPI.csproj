@@ -211,7 +211,7 @@
     <Compile Include="Controllers\TransactionController.cs" />
 
     <Compile Include="Controllers\ProductController.cs" />
->>>>>>> fc074304cb94f1ac6dbf8d7bb489d0cc737019d7
+
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
