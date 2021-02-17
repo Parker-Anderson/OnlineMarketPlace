@@ -20,4 +20,5 @@ namespace OnlineMarketPlace.Data
         [Required]
         public string UserRole { get; set; }
     }
-}
+
+ }
