@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OnlineMarketPlace.Models
 {
-    public class TransactionCreate
+    public class ProductCreate
     {
         [Required]
         public string Name { get; set; }

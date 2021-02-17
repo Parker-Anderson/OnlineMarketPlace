@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace OnlineMarketPlace.Services
 {
-    public class TransactionService
+    public class ProductService
     {
-        public IEnumerable<TransactionListItem> GetTransaction()
+        public IEnumerable<ProductListItem> GetProduct()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .Transactions
+                        .Products
                         .Where(e => e.Id == _userId)
                         .Select(
                             e =>
-                                new TransactionListItem
+                                new ProductListItem
                                 {
                                     Id = e.Id,
                                     Name = e.Name,
@@ -33,15 +33,15 @@ namespace OnlineMarketPlace.Services
         }
         private readonly int _userId;
 
-        public TransactionService(int userId)
+        public ProductService(int userId)
         {
             _userId = userId;
         }
 
-        public bool CreateTransaction(TransactionCreate model)
+        public bool CreateProduct(ProductCreate model)
         {
             var entity =
-                new Transaction()
+                new Product()
                 {
                     Id = _userId,
                     Name = model.Name,
@@ -50,7 +50,7 @@ namespace OnlineMarketPlace.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Transactions.Add(entity);
+                ctx.Products.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         
