@@ -13,6 +13,8 @@ namespace OnlineMarketPlace.Data
 {
     public class Transaction
     {
+        [Key]
+        public int Id { get; set; }
 
         [ForeignKey(nameof(User))]
         public int UserId { get; set; }
@@ -21,6 +23,7 @@ namespace OnlineMarketPlace.Data
         [ForeignKey(nameof(Product))]
         public double Cost { get; set; }
         public virtual Product Product { get; set; }
-        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset Created { get; set; }
+        public double Amount { get; set; }
     }
 }
