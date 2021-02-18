@@ -19,6 +19,8 @@ namespace OnlineMarketPlace.Data
         public DateTime DateJoined { get; set; }
         [Required]
         public string UserRole { get; set; }
+        
+        public Guid UserID { get; set; }
     }
 
  }
