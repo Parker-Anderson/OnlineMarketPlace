@@ -7,16 +7,13 @@ using System.Threading.Tasks;
 
 namespace OnlineMarketPlace.Models
 {
-    public class UserCreate
+    public class UserDetail
     {
-        [Required]
+        public int UserId { get; set; }
         public string Name { get; set; }
-        [Required]
         public string Email { get; set; }
-        [Required]
-        public string UserRole { get; set; }
-        [Required]
+        [Display(Name="Joined")]
         public DateTime DateJoined { get; set; }
-
+        public string UserRole { get; set; }
     }
 }
