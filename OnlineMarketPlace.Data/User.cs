@@ -9,6 +9,7 @@ namespace OnlineMarketPlace.Data
 {
     public class User
     {
+       
         [Key]
         public int ID { get; set; }
         [Required]
@@ -21,6 +22,13 @@ namespace OnlineMarketPlace.Data
         public DateTime DateJoined { get; set; }
         [Required]
         public string UserRole { get; set; }
+        public Guid UserID { get; set; }
+        //public UserRole Role { get; set; }
+        //public enum UserRole
+        //{
+        //  Buyer = 1,
+        //  Seller
+        //}
     }
 
- }
+}
