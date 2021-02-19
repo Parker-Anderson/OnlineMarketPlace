@@ -55,5 +55,41 @@ namespace OnlineMarketPlace.Services
                 return query.ToArray();
             }
         }
+        public UserDetail GetUserById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Users
+                        .Single(e => e.ID == id && e.UserID == _userId);
+                return
+                    new UserDetail
+                    {
+                        UserId = entity.ID,
+                        Name = entity.Name,
+                        Email = entity.Email,
+                        DateJoined = entity.DateJoined,
+                        UserRole = entity.UserRole
+                    };
+            }
+        }
+        public bool UpdateUser(UserEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Users
+                        .Single(e => e.ID == model.ID && e.UserID == _userId);
+                entity.ID = model.ID;
+                entity.Name = model.Name;
+                entity.Email = model.Email;
+                entity.UserRole = model.UserRole;
+
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
     }
 }
