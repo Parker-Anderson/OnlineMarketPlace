@@ -21,7 +21,7 @@ namespace OnlineMarketPlace.Services
             var entity = new Transaction()
             {
                 Id = _userId,
-                Amount = trans.Amount
+                Cost = trans.Cost
             };
             using (var ctx = new ApplicationDbContext())
             {
@@ -39,12 +39,56 @@ namespace OnlineMarketPlace.Services
                     .Select(e => new TransactionListItem
                     {
                         Id = e.Id,
-                        Amount = e.Amount,
+                        Cost= e.Cost,
                         CreatedUtc = e.CreatedUtc
                     }
                     );
                     
                 return query.ToArray();
+            }
+        }
+        public TransactionDetail GetTransactionById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                      .Transactions
+                      .Single(e => e.Id == id && e.Id == _userId);
+                return new TransactionDetail
+                {
+                    Id = entity.Id,
+                    Cost = entity.Cost,
+                    CreatedUtc = entity.CreatedUtc,
+                    ModifiedUtc = entity.ModifiedUtc
+                };
+            }
+        }
+        public bool UpdateTransaction(TransactionEdit trans)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                    .Transactions
+                    .Single(e => e.Id == trans.Id && e.Id == _userId);
+
+                entity.Id = trans.Id;
+                entity.Cost = trans.Cost;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteTransaction(int id)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                    .Transactions
+                    .Single(e => e.Id == id && e.Id == _userId);
+
+                ctx.Transactions.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }

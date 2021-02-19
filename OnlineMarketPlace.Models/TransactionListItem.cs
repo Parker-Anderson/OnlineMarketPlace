@@ -10,9 +10,16 @@ namespace OnlineMarketPlace.Models
     public class TransactionListItem
     {
         public int Id { get; set; }
-        public int Amount { get; set; }
+        public double Cost { get; set; }
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
+        public enum PaymentMethod
+        {
+            CreditCard = 1,
+            DebitCard,
+            GiftCard,
+            PayPal
+        }
 
         //public string UserRole { get; set; } 
         //Transaction assigned to buyer and/or seller?
