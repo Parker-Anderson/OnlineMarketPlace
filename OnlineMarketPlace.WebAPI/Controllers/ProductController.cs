@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using OnlineMarketPlace.Data;
 using OnlineMarketPlace.Models;
 using OnlineMarketPlace.Services;
 using System;
@@ -33,8 +34,8 @@ namespace OnlineMarketPlace.WebAPI.Controllers
         }
         private ProductService CreateProductService()
         {
-            var Id = int.Parse(User.Identity.GetUserId());
-            var productService = new ProductService(Id);
+            var productId = Guid.Parse(User.Identity.GetProductId());
+            var productService = new ProductService(productId);
             return productService;
         }
     }
