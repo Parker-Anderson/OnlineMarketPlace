@@ -91,5 +91,17 @@ namespace OnlineMarketPlace.Services
 
             }
         }
+        public bool DeleteUser(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Users
+                        .Single(e => e.ID == id && e.UserID == _userId);
+                ctx.Users.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
