@@ -17,12 +17,12 @@ namespace OnlineMarketPlace.Services
                 var query =
                     ctx
                         .Products
-                        .Where(e => e.ProductId == _productId)
+                        .Where(e => e.ID == _productId)
                         .Select(
                             e =>
                                 new ProductListItem
                                 {
-                                    Id = e.Id,
+                                    Id = e.ID,
                                     Name = e.Name,
                                     Price = e.Price
                                 }
@@ -31,9 +31,9 @@ namespace OnlineMarketPlace.Services
                 return query.ToArray();
             }
         }
-        private readonly Guid _productId;
+        private readonly int _productId;
 
-        public ProductService(Guid productId)
+        public ProductService(int productId)
         {
             _productId = productId;
         }
