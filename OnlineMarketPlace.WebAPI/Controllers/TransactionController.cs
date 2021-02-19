@@ -39,6 +39,27 @@ namespace OnlineMarketPlace.WebAPI.Controllers
                 var transactionService = new TransactionService(Id);
                 return transactionService;
             }
+            public IHttpActionResult Put(TransactionEdit trans)
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var service = CreateTransactionService();
+
+                if (!service.UpdateTransaction(trans))
+                    return InternalServerError();
+
+                return Ok();
+            }
+            public IHttpActionResult Delete(int id)
+            {
+                var service = CreateTransactionService();
+
+                if (!service.DeleteTransaction(id))
+                    return InternalServerError();
+
+                return Ok();
+            }
         }
     }
 }
