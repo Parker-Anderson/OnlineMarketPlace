@@ -63,6 +63,8 @@
     <Compile Include="TransactionListItem.cs" />
     <Compile Include="UserCreate.cs" />
     <Compile Include="UserListItem.cs" />
+    <Compile Include="UserDetail.cs" />
+    <Compile Include="UserEdit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
