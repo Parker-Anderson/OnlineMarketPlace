@@ -13,6 +13,7 @@ namespace OnlineMarketPlace.Data
 {
     public class Transaction
     {
+
         public enum PaymentMethod
         {
             CreditCard = 1,
@@ -20,6 +21,7 @@ namespace OnlineMarketPlace.Data
             GiftCard,
             PayPal
         }
+
         [Key]
         public int Id { get; set; }
 
@@ -27,9 +29,9 @@ namespace OnlineMarketPlace.Data
         public int UserId { get; set; }
         public virtual User User { get; set; }
 
-        [ForeignKey(nameof(Product))]
-        public double Cost { get; set; }
-        public virtual Product Product { get; set; }
+        //[ForeignKey(nameof(Product))]
+       // public double Cost { get; set; }
+        //public virtual Product Product { get; set; }
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
 
