@@ -63,11 +63,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransactionService.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineMarketPlace.Data\OnlineMarketPlace.Data.csproj">
+      <Project>{b1117235-1995-4d97-b5c7-8cd80ad3395c}</Project>
+      <Name>OnlineMarketPlace.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineMarketPlace.Models\OnlineMarketPlace.Models.csproj">
+      <Project>{49364fb6-5246-412b-9c78-6f60b86d27f7}</Project>
+      <Name>OnlineMarketPlace.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

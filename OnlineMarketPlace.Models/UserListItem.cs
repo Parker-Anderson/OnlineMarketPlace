@@ -5,30 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineMarketPlace.Data
+namespace OnlineMarketPlace.Models
 {
-    public class User
+    public class UserListItem
     {
-
-        [Key]
         public int ID { get; set; }
-
-
-        [Required]
         public string Name { get; set; }
-        [Required]
         public string Email { get; set; }
-        [Required]
+        [Display(Name = "Joined")]
         public DateTime DateJoined { get; set; }
-        [Required]
         public string UserRole { get; set; }
-        public Guid UserID { get; set; }
-        //public UserRole Role { get; set; }
-        //public enum UserRole
-        //{
-        //  Buyer = 1,
-        //  Seller
-        //}
-    }
 
+    }
 }
