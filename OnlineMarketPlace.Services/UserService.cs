@@ -86,6 +86,8 @@ namespace OnlineMarketPlace.Services
                 entity.Name = model.Name;
                 entity.Email = model.Email;
                 entity.UserRole = model.UserRole;
+                entity.DateJoined = model.DateJoined;
+                entity.UserID = _userId;
 
                 return ctx.SaveChanges() == 1;
 

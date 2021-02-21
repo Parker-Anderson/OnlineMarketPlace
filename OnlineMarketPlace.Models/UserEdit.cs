@@ -12,5 +12,7 @@ namespace OnlineMarketPlace.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public string UserRole { get; set; }
+        public DateTime DateJoined { get; set; }
+        public Guid UserID { get; set; }
     }
 }

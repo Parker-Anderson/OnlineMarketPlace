@@ -10,11 +10,12 @@ using System.Web.Http;
 
 namespace OnlineMarketPlace.WebAPI.Controllers
 {
+    [Authorize]
     public class TransactionController : ApiController
     {
-        [Authorize]
-        public class ProductController : ApiController
-        {
+        
+        
+        
             public IHttpActionResult Get()
             {
                 TransactionService transactionService = CreateTransactionService();
@@ -62,4 +63,4 @@ namespace OnlineMarketPlace.WebAPI.Controllers
             }
         }
     }
-}
+
