@@ -21,8 +21,11 @@ namespace OnlineMarketPlace.Data
         }
     }
 
+    
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        //public readonly IEnumerable<object> Categories;
+       
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -35,6 +38,8 @@ namespace OnlineMarketPlace.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
