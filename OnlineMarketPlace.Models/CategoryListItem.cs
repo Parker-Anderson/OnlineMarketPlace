@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace OnlineMarketPlace.Data
 {
-    class Categories
+    public class CategoryListItem
     {
+        public int CategoryId { get; set; }
+        public CategoryType Name { get; set; }
+
     }
+
+
 }
