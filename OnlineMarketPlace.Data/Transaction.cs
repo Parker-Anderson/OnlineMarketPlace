@@ -24,8 +24,7 @@ namespace OnlineMarketPlace.Data
             PayPal
         }
 
-        [Key]
-        public int Id { get; set; }
+    
 
         [ForeignKey(nameof(User))]
         public int UserId { get; set; }
