@@ -32,6 +32,12 @@ namespace OnlineMarketPlace.WebAPI.Controllers
 
             return Ok();
         }
+        public IHttpActionResult Get(int id)
+        {
+            ProductService productService = CreateProductService();
+            var note = productService.GetProductById(id);
+            return Ok(note);
+        }
         private ProductService CreateProductService()
         {
             var productId = Guid.Parse(User.Identity.GetUserId());
