@@ -31,6 +31,25 @@ namespace OnlineMarketPlace.Services
                 return query.ToArray();
             }
         }
+        public ProductDetail GetProductById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Products
+                        .Single(e => e.ProductId  == _productId);
+                return
+                    new ProductDetail
+                    {
+                        ID = entity.ID,
+                        Name = entity.Name,
+                        Price = entity.Price,
+                        HowLongOnMarket = entity.HowLongOnMarket,
+                        Description = entity.Description
+                    };
+            }
+        }
         private readonly Guid _productId;
 
         public ProductService(Guid productId)
