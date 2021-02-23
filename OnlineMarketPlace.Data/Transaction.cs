@@ -26,9 +26,9 @@ namespace OnlineMarketPlace.Data
 
 
 
-        [ForeignKey(nameof(User))]
-        public int UserId { get; set; }
-        public virtual User User { get; set; }
+        //[ForeignKey(nameof(User))]
+        //public int UserId { get; set; }
+        //public virtual User User { get; set; }
 
 
         // [ForeignKey(nameof(Product))]
@@ -41,6 +41,8 @@ namespace OnlineMarketPlace.Data
 
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
+
+        public Guid TransactionId { get; set; }
 
     }
 }
