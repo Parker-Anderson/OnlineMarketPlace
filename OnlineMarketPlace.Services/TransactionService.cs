@@ -10,9 +10,9 @@ namespace OnlineMarketPlace.Services
 {
     public class TransactionService
     {
-        private readonly int _userId;
+        private readonly Guid _userId;
 
-        public TransactionService(int userId)
+        public TransactionService(Guid userId)
         {
             _userId = userId;
         }
@@ -20,7 +20,7 @@ namespace OnlineMarketPlace.Services
         {
             var entity = new Transaction()
             {
-                Id = _userId,
+                Id = trans.Id,
                 Cost = trans.Cost
             };
             using (var ctx = new ApplicationDbContext())
@@ -35,7 +35,7 @@ namespace OnlineMarketPlace.Services
             {
                 var query = ctx
                     .Transactions
-                    .Where(e => e.Id == _userId)
+                    .Where(e => e.TransactionId == _userId)
                     .Select(e => new TransactionListItem
                     {
                         Id = e.Id,
@@ -53,7 +53,7 @@ namespace OnlineMarketPlace.Services
             {
                 var entity = ctx
                       .Transactions
-                      .Single(e => e.Id == id && e.Id == _userId);
+                      .Single(e => e.Id == id && e.TransactionId == _userId);
                 return new TransactionDetail
                 {
                     Id = entity.Id,
@@ -69,7 +69,7 @@ namespace OnlineMarketPlace.Services
             {
                 var entity = ctx
                     .Transactions
-                    .Single(e => e.Id == trans.Id && e.Id == _userId);
+                    .Single(e => e.Id == trans.Id && e.TransactionId == _userId);
 
                 entity.Id = trans.Id;
                 entity.Cost = trans.Cost;
@@ -84,7 +84,7 @@ namespace OnlineMarketPlace.Services
             {
                 var entity = ctx
                     .Transactions
-                    .Single(e => e.Id == id && e.Id == _userId);
+                    .Single(e => e.Id == id && e.TransactionId == _userId);
 
                 ctx.Transactions.Remove(entity);
 
