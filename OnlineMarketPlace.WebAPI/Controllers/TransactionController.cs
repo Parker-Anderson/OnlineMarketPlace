@@ -36,7 +36,7 @@ namespace OnlineMarketPlace.WebAPI.Controllers
         }
         private TransactionService CreateTransactionService()
         {
-            var Id = int.Parse(User.Identity.GetUserId());
+            var Id = Guid.Parse(User.Identity.GetUserId());
             var transactionService = new TransactionService(Id);
             return transactionService;
         }

@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddCat : DbMigration
+    public partial class ClearMigration : DbMigration
     {
         public override void Up()
         {
@@ -27,6 +27,7 @@
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         HowLongOnMarket = c.Time(nullable: false, precision: 7),
                         Description = c.String(),
+                        ProductId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -63,6 +64,7 @@
                         Cost = c.Double(nullable: false),
                         CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
                         ModifiedUtc = c.DateTimeOffset(precision: 7),
+                        TransactionId = c.Guid(nullable: false),
                         Product_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
