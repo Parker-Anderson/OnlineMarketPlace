@@ -23,6 +23,7 @@ namespace OnlineMarketPlace.Data
         [Required]
         public string Email { get; set; }
         [Required]
+        public virtual Transaction Transaction { get; set; }
         public DateTime DateJoined { get; set; }
         [Required]
         public string UserRole { get; set; }
