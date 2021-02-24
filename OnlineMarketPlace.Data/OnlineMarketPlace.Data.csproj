@@ -95,13 +95,9 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202102230454164_ClearMigration.cs" />
-    <Compile Include="Migrations\202102230454164_ClearMigration.designer.cs">
-      <DependentUpon>202102230454164_ClearMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102230502363_TRANSNOFK.cs" />
-    <Compile Include="Migrations\202102230502363_TRANSNOFK.designer.cs">
-      <DependentUpon>202102230502363_TRANSNOFK.cs</DependentUpon>
+    <Compile Include="Migrations\202102240436044_Migration_3.cs" />
+    <Compile Include="Migrations\202102240436044_Migration_3.designer.cs">
+      <DependentUpon>202102240436044_Migration_3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
@@ -114,11 +110,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102230454164_ClearMigration.resx">
-      <DependentUpon>202102230454164_ClearMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102230502363_TRANSNOFK.resx">
-      <DependentUpon>202102230502363_TRANSNOFK.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102240436044_Migration_3.resx">
+      <DependentUpon>202102240436044_Migration_3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

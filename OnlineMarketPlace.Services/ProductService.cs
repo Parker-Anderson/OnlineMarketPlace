@@ -45,7 +45,8 @@ namespace OnlineMarketPlace.Services
                 {
 
                     Name = model.Name,
-                    Price = model.Price
+                    Price = model.Price,
+                    //PersonId = model.PersonId
                 };
 
             using (var ctx = new ApplicationDbContext())

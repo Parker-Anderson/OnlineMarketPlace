@@ -22,16 +22,18 @@ namespace OnlineMarketPlace.Data
 
         public string Description { get; set; }
         public Guid ProductId { get; set; }
+        //[ForeignKey(nameof(User))]
+        //public int PersonId { get; set; }
+        //public virtual User User {get; set;}
+
+
+
 
 
 
         // [ForeignKey(name of(Category))]
         //public int CategoryId {get; set;}
         //public virtual Category CategoryId {get; set;}
-
-        //[ForeignKey(nameof(User))]
-        //public int UserId { get; set; }
-        // public virtual User User {get; set;}
 
     }
 }

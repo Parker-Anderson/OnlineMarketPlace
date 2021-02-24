@@ -13,7 +13,7 @@ namespace OnlineMarketPlace.Data
         
         
         [Key]
-        public int ID { get; set; }
+        public int PersonId { get; set; }
 
         public int integer { get; set; }
 

@@ -9,7 +9,7 @@ namespace OnlineMarketPlace.Models
 {
     public class UserListItem
     {
-        public int ID { get; set; }
+        public int PersonId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         [Display(Name = "Joined")]

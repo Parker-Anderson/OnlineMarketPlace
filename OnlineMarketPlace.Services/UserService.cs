@@ -45,7 +45,7 @@ namespace OnlineMarketPlace.Services
                         e =>
                         new UserListItem
                         {
-                            ID = e.ID,
+                            PersonId = e.PersonId,
                             Name = e.Name,
                             Email = e.Email,
                             UserRole = e.UserRole,
@@ -62,11 +62,11 @@ namespace OnlineMarketPlace.Services
                 var entity =
                     ctx
                         .Users
-                        .Single(e => e.ID == id && e.UserID == _userId);
+                        .Single(e => e.PersonId == id && e.UserID == _userId);
                 return
                     new UserDetail
                     {
-                        UserId = entity.ID,
+                        PersonId = entity.PersonId,
                         Name = entity.Name,
                         Email = entity.Email,
                         DateJoined = entity.DateJoined,
@@ -81,8 +81,8 @@ namespace OnlineMarketPlace.Services
                 var entity =
                     ctx
                         .Users
-                        .Single(e => e.ID == model.ID && e.UserID == _userId);
-                entity.ID = model.ID;
+                        .Single(e => e.PersonId == model.PersonId && e.UserID == _userId);
+                entity.PersonId = model.PersonId;
                 entity.Name = model.Name;
                 entity.Email = model.Email;
                 entity.UserRole = model.UserRole;
@@ -100,7 +100,7 @@ namespace OnlineMarketPlace.Services
                 var entity =
                     ctx
                         .Users
-                        .Single(e => e.ID == id && e.UserID == _userId);
+                        .Single(e => e.PersonId == id && e.UserID == _userId);
                 ctx.Users.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
