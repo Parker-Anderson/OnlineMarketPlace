@@ -14,7 +14,9 @@ namespace OnlineMarketPlace.Models
         public string Name { get; set; }
         [Required]
         public decimal Price { get; set; }
+        //[Required]
+        //public int PersonId { get; set; }
         [Required]
-        public int PersonId { get; set; }
+        public int CategoryId { get; set; }
     }
 }

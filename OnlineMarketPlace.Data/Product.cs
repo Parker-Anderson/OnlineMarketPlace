@@ -31,9 +31,9 @@ namespace OnlineMarketPlace.Data
 
 
 
-        // [ForeignKey(name of(Category))]
-        //public int CategoryId {get; set;}
-        //public virtual Category CategoryId {get; set;}
+        [ForeignKey(nameof(Category))]
+        public int CategoryId {get; set;}
+        public virtual Category Category {get; set;}
 
     }
 }
