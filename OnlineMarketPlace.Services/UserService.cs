@@ -23,7 +23,7 @@ namespace OnlineMarketPlace.Services
                     UserID = _userId,
                     Name = model.Name,
                     Email = model.Email,
-                    UserRole = model.UserRole,
+                    Role = model.Role,
                     DateJoined = model.DateJoined
                 };
             using (var ctx = new ApplicationDbContext())
@@ -48,7 +48,7 @@ namespace OnlineMarketPlace.Services
                             PersonId = e.PersonId,
                             Name = e.Name,
                             Email = e.Email,
-                            UserRole = e.UserRole,
+                            Role = e.Role,
                             DateJoined = e.DateJoined,
                         }
                   );
@@ -70,7 +70,7 @@ namespace OnlineMarketPlace.Services
                         Name = entity.Name,
                         Email = entity.Email,
                         DateJoined = entity.DateJoined,
-                        UserRole = entity.UserRole
+                        Role = entity.Role
                     };
             }
         }
@@ -85,7 +85,7 @@ namespace OnlineMarketPlace.Services
                 entity.PersonId = model.PersonId;
                 entity.Name = model.Name;
                 entity.Email = model.Email;
-                entity.UserRole = model.UserRole;
+                entity.Role = model.Role;
                 entity.DateJoined = model.DateJoined;
                 entity.UserID = _userId;
 

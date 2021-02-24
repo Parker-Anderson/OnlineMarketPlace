@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static OnlineMarketPlace.Data.User;
 
 namespace OnlineMarketPlace.Models
 {
@@ -11,7 +12,7 @@ namespace OnlineMarketPlace.Models
         public int PersonId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public string UserRole { get; set; }
+        public UserRole Role { get; set; }
         public DateTime DateJoined { get; set; }
         public Guid UserID { get; set; }
     }

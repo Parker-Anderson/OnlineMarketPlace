@@ -14,25 +14,20 @@ namespace OnlineMarketPlace.Data
         
         [Key]
         public int PersonId { get; set; }
-
-        public int integer { get; set; }
-
-
         [Required]
         public string Name { get; set; }
         [Required]
         public string Email { get; set; }
         [Required]
         public DateTime DateJoined { get; set; }
-        [Required]
-        public string UserRole { get; set; }
         public Guid UserID { get; set; }
-        //public UserRole Role { get; set; }
-        //public enum UserRole
-        //{
-        //  Buyer = 1,
-        //  Seller
-        //}
+        [Required]
+        public UserRole Role { get; set; }
+        public enum UserRole
+        {
+          Buyer = 1,
+          Seller
+        }
     }
 
 }
