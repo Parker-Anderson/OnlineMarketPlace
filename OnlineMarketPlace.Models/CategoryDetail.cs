@@ -10,7 +10,7 @@ namespace OnlineMarketPlace.Models
     public class CategoryDetail
     {
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public CategoryType Name { get; set; }
         public double Popularity { get; set; }
 

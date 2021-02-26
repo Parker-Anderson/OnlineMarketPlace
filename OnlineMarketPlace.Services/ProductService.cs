@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace OnlineMarketPlace.Services
 {
+
     public class ProductService
     {
         public IEnumerable<ProductListItem> GetProduct()
@@ -45,7 +46,9 @@ namespace OnlineMarketPlace.Services
                 {
 
                     Name = model.Name,
-                    Price = model.Price
+                    Price = model.Price,
+                    PersonId = model.PersonId,
+                    CategoryId = model.CategoryId
                 };
 
             using (var ctx = new ApplicationDbContext())

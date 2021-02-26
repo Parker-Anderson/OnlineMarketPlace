@@ -12,6 +12,7 @@ namespace OnlineMarketPlace.WebAPI
 
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
+
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {

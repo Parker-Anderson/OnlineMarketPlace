@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static OnlineMarketPlace.Data.User;
 
 namespace OnlineMarketPlace.Models
 {
@@ -14,7 +15,8 @@ namespace OnlineMarketPlace.Models
         public string Email { get; set; }
         [Display(Name = "Joined")]
         public DateTime DateJoined { get; set; }
-        public string UserRole { get; set; }
+        public UserRole UserRole { get; set; }
+        public int? PersonId { get; set; }
 
     }
 }

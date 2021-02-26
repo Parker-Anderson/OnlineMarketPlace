@@ -10,6 +10,10 @@ namespace OnlineMarketPlace.Models
     {
         public int Id { get; set; }
         public double Cost { get; set; }
+        public int? PersonId { get; set; }
+        public int? ProductId { get; set; }
+
+
         // Anything else?
 
     }

@@ -22,7 +22,8 @@ namespace OnlineMarketPlace.Services
             {
                 Id = trans.Id,
                 Cost = trans.Cost,
-                PersonID = trans.PersonID
+                PersonId = trans.PersonId,
+                ProductId = trans.ProductId
             };
             using (var ctx = new ApplicationDbContext())
             {
@@ -75,6 +76,9 @@ namespace OnlineMarketPlace.Services
                 entity.Id = trans.Id;
                 entity.Cost = trans.Cost;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                entity.PersonId = trans.PersonId;
+                entity.ProductId = trans.ProductId;
+
 
                 return ctx.SaveChanges() == 1;
             }

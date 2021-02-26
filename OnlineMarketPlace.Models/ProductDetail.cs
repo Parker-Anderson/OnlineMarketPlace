@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OnlineMarketPlace.Models
 {
-    public class ProductCreate
+    public class ProductDetail
     {
-        public int Id { get; set; }
-        [Required]
+        public int ID { get; set; }
+
         public string Name { get; set; }
-        [Required]
         public decimal Price { get; set; }
-        //[Required]
+        public TimeSpan HowLongOnMarket { get; set; }
+
+        public string Description { get; set; }
+        public Guid ProductId { get; set; }
         public int? PersonId { get; set; }
-        //[Required]
         public int? CategoryId { get; set; }
     }
 }
