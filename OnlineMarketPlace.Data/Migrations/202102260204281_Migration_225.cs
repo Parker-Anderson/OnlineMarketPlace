@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Migration_2253 : DbMigration
+    public partial class Migration_225 : DbMigration
     {
         public override void Up()
         {
@@ -24,16 +24,16 @@
                     {
                         ID = c.Int(nullable: false, identity: true),
                         Name = c.String(),
-                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Price = c.Decimal(precision: 18, scale: 2),
                         HowLongOnMarket = c.Time(nullable: false, precision: 7),
                         Description = c.String(),
                         ProductId = c.Guid(nullable: false),
-                        PersonId = c.Int(nullable: false),
-                        CategoryId = c.Int(nullable: false),
+                        PersonId = c.Int(),
+                        CategoryId = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Category", t => t.CategoryId, cascadeDelete: true)
-                .ForeignKey("dbo.User", t => t.PersonId, cascadeDelete: true)
+                .ForeignKey("dbo.Category", t => t.CategoryId)
+                .ForeignKey("dbo.User", t => t.PersonId)
                 .Index(t => t.PersonId)
                 .Index(t => t.CategoryId);
             
@@ -79,15 +79,18 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        PersonId = c.Int(nullable: false),
-                        Cost = c.Double(nullable: false),
+                        PersonId = c.Int(),
+                        ProductId = c.Int(),
+                        Cost = c.Decimal(precision: 18, scale: 2),
                         CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
                         ModifiedUtc = c.DateTimeOffset(precision: 7),
                         TransactionId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.User", t => t.PersonId, cascadeDelete: true)
-                .Index(t => t.PersonId);
+                .ForeignKey("dbo.Product", t => t.ProductId)
+                .ForeignKey("dbo.User", t => t.PersonId)
+                .Index(t => t.PersonId)
+                .Index(t => t.ProductId);
             
             CreateTable(
                 "dbo.ApplicationUser",
@@ -143,11 +146,13 @@
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.Transaction", "PersonId", "dbo.User");
+            DropForeignKey("dbo.Transaction", "ProductId", "dbo.Product");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
             DropForeignKey("dbo.Product", "PersonId", "dbo.User");
             DropForeignKey("dbo.Product", "CategoryId", "dbo.Category");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
+            DropIndex("dbo.Transaction", new[] { "ProductId" });
             DropIndex("dbo.Transaction", new[] { "PersonId" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });

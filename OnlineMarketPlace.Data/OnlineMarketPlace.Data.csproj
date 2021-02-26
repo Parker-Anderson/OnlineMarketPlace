@@ -95,26 +95,6 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202102252353299_Migration_2253.cs" />
-    <Compile Include="Migrations\202102252353299_Migration_2253.designer.cs">
-      <DependentUpon>202102252353299_Migration_2253.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102260009355_Migration_2254.cs" />
-    <Compile Include="Migrations\202102260009355_Migration_2254.designer.cs">
-      <DependentUpon>202102260009355_Migration_2254.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102260011462_Migration_2255.cs" />
-    <Compile Include="Migrations\202102260011462_Migration_2255.designer.cs">
-      <DependentUpon>202102260011462_Migration_2255.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102260013551_Migration_2256.cs" />
-    <Compile Include="Migrations\202102260013551_Migration_2256.designer.cs">
-      <DependentUpon>202102260013551_Migration_2256.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102260023594_Migration_2257.cs" />
-    <Compile Include="Migrations\202102260023594_Migration_2257.designer.cs">
-      <DependentUpon>202102260023594_Migration_2257.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,23 +104,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102252353299_Migration_2253.resx">
-      <DependentUpon>202102252353299_Migration_2253.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102260009355_Migration_2254.resx">
-      <DependentUpon>202102260009355_Migration_2254.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102260011462_Migration_2255.resx">
-      <DependentUpon>202102260011462_Migration_2255.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102260013551_Migration_2256.resx">
-      <DependentUpon>202102260013551_Migration_2256.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102260023594_Migration_2257.resx">
-      <DependentUpon>202102260023594_Migration_2257.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

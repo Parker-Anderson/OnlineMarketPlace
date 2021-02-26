@@ -33,7 +33,7 @@ namespace OnlineMarketPlace.Data
 
         [ForeignKey(nameof(Product))]
         public int? ProductId { get; set; }
-        public double Cost { get; set; }
+        public decimal Cost { get; set; }
         public virtual Product Product { get; set; }
 
 

@@ -12,7 +12,7 @@ namespace OnlineMarketPlace.Models
         [Required]
         public int Id { get; set; }
         [Required]
-        public double Cost { get; set; }
+        public decimal Cost { get; set; }
         
         public int? PersonId { get; set; }
         

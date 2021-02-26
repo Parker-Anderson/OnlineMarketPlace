@@ -7,13 +7,13 @@ namespace OnlineMarketPlace.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Migration_2257 : IMigrationMetadata
+    public sealed partial class Migration_225 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Migration_2257));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Migration_225));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102260023594_Migration_2257"; }
+            get { return "202102260204281_Migration_225"; }
         }
         
         string IMigrationMetadata.Source

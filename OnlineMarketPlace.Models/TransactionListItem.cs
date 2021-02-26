@@ -10,7 +10,7 @@ namespace OnlineMarketPlace.Models
     public class TransactionListItem
     {
         public int Id { get; set; }
-        public double Cost { get; set; }
+        public decimal Cost { get; set; }
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
         public enum PaymentMethod
