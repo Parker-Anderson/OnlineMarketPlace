@@ -21,7 +21,8 @@ namespace OnlineMarketPlace.Services
             var entity = new Transaction()
             {
                 Id = trans.Id,
-                Cost = trans.Cost
+                Cost = trans.Cost,
+                PersonID = trans.PersonID
             };
             using (var ctx = new ApplicationDbContext())
             {

@@ -13,6 +13,7 @@ namespace OnlineMarketPlace.Models
         public int Id { get; set; }
         [Required]
         public double Cost { get; set; }
+        public int PersonID { get; set; }
         // Add anything else?
 
 
