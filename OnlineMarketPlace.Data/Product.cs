@@ -22,9 +22,9 @@ namespace OnlineMarketPlace.Data
 
         public string Description { get; set; }
         public Guid ProductId { get; set; }
-        //[ForeignKey(nameof(User))]
-        //public int PersonId { get; set; }
-        //public virtual User User {get; set;}
+        [ForeignKey(nameof(User))]
+        public int? PersonId { get; set; }
+        public virtual User User {get; set;}
 
 
 
@@ -32,7 +32,7 @@ namespace OnlineMarketPlace.Data
 
 
         [ForeignKey(nameof(Category))]
-        public int CategoryId {get; set;}
+        public int? CategoryId {get; set;}
         public virtual Category Category {get; set;}
 
     }

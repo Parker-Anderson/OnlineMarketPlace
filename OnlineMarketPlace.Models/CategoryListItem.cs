@@ -8,7 +8,7 @@ namespace OnlineMarketPlace.Data
 {
     public class CategoryListItem
     {
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public CategoryType Name { get; set; }
 
     }

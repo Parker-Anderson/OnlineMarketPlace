@@ -16,6 +16,7 @@ namespace OnlineMarketPlace.Models
 
         public string Description { get; set; }
         public Guid ProductId { get; set; }
-        public int PersonId { get; set; }
+        public int? PersonId { get; set; }
+        public int? CategoryId { get; set; }
     }
 }

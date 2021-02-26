@@ -77,7 +77,7 @@ namespace OnlineMarketPlace.Services
                 entity.Cost = trans.Cost;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
                 entity.PersonId = trans.PersonId;
-                //entity.ProductId = trans.ProductId;
+                entity.ProductId = trans.ProductId;
                 
 
                 return ctx.SaveChanges() == 1;

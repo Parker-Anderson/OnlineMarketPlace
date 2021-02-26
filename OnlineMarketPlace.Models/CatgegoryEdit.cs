@@ -8,7 +8,7 @@ namespace OnlineMarketPlace.Models
 {
     public class CategoryEdit
     {
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public string Name { get; set; }
         public double PriceRange { get; set; }
 

@@ -46,7 +46,7 @@ namespace OnlineMarketPlace.Services
 
                     Name = model.Name,
                     Price = model.Price,
-                    //PersonId = model.PersonId
+                    PersonId = model.PersonId,
                     CategoryId = model.CategoryId
                 };
 

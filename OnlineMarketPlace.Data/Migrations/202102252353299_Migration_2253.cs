@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Migration_3 : DbMigration
+    public partial class Migration_2253 : DbMigration
     {
         public override void Up()
         {
@@ -28,8 +28,27 @@
                         HowLongOnMarket = c.Time(nullable: false, precision: 7),
                         Description = c.String(),
                         ProductId = c.Guid(nullable: false),
+                        PersonId = c.Int(nullable: false),
+                        CategoryId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Category", t => t.CategoryId, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.PersonId, cascadeDelete: true)
+                .Index(t => t.PersonId)
+                .Index(t => t.CategoryId);
+            
+            CreateTable(
+                "dbo.User",
+                c => new
+                    {
+                        PersonId = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                        DateJoined = c.DateTime(nullable: false),
+                        UserID = c.Guid(nullable: false),
+                        Role = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.PersonId);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -69,20 +88,6 @@
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.User", t => t.PersonId, cascadeDelete: true)
                 .Index(t => t.PersonId);
-            
-            CreateTable(
-                "dbo.User",
-                c => new
-                    {
-                        PersonId = c.Int(nullable: false, identity: true),
-                        integer = c.Int(nullable: false),
-                        Name = c.String(nullable: false),
-                        Email = c.String(nullable: false),
-                        DateJoined = c.DateTime(nullable: false),
-                        UserRole = c.String(nullable: false),
-                        UserID = c.Guid(nullable: false),
-                    })
-                .PrimaryKey(t => t.PersonId);
             
             CreateTable(
                 "dbo.ApplicationUser",
@@ -139,18 +144,22 @@
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.Transaction", "PersonId", "dbo.User");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
+            DropForeignKey("dbo.Product", "PersonId", "dbo.User");
+            DropForeignKey("dbo.Product", "CategoryId", "dbo.Category");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.Transaction", new[] { "PersonId" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
+            DropIndex("dbo.Product", new[] { "CategoryId" });
+            DropIndex("dbo.Product", new[] { "PersonId" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
-            DropTable("dbo.User");
             DropTable("dbo.Transaction");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
+            DropTable("dbo.User");
             DropTable("dbo.Product");
             DropTable("dbo.Category");
         }
