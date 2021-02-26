@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace OnlineMarketPlace.Models
 {
-    public class TransactionEdit
+    public class ProductEdit
     {
-        public int Id { get; set; }
-        public double Cost { get; set; }
-
         public int IdOfProduct { get; set; }
 
+        public string Name { get; set; }
+        public decimal Price { get; set; }
 
-        // Anything else?
+        public string Description { get; set; }
 
     }
 }

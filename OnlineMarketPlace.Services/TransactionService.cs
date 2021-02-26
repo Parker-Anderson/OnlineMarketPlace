@@ -21,7 +21,10 @@ namespace OnlineMarketPlace.Services
             var entity = new Transaction()
             {
                 Id = trans.Id,
-                Cost = trans.Cost
+                //Cost = trans.Cost,
+                PersonID = trans.PersonID,
+                IdOfProduct = trans.IdOfProduct
+
             };
             using (var ctx = new ApplicationDbContext())
             {
@@ -39,7 +42,7 @@ namespace OnlineMarketPlace.Services
                     .Select(e => new TransactionListItem
                     {
                         Id = e.Id,
-                        Cost = e.Cost,
+                        //Cost = e.Cost,
                         CreatedUtc = e.CreatedUtc
                     }
                     );
@@ -57,7 +60,7 @@ namespace OnlineMarketPlace.Services
                 return new TransactionDetail
                 {
                     Id = entity.Id,
-                    Cost = entity.Cost,
+                    //Cost = entity.Cost,
                     CreatedUtc = entity.CreatedUtc,
                     ModifiedUtc = entity.ModifiedUtc
                 };
@@ -72,7 +75,7 @@ namespace OnlineMarketPlace.Services
                     .Single(e => e.Id == trans.Id && e.TransactionId == _userId);
 
                 entity.Id = trans.Id;
-                entity.Cost = trans.Cost;
+                //entity.Cost = trans.Cost;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
                 return ctx.SaveChanges() == 1;

@@ -8,7 +8,7 @@ namespace OnlineMarketPlace.Models
 {
     public class ProductDetail
     {
-        public int ID { get; set; }
+        public int IdOfProduct { get; set; }
 
         public string Name { get; set; }
         public decimal Price { get; set; }
@@ -16,5 +16,6 @@ namespace OnlineMarketPlace.Models
 
         public string Description { get; set; }
         public Guid ProductId { get; set; }
+        public int CategoryId { get; set; }
     }
 }

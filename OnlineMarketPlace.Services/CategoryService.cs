@@ -12,11 +12,11 @@ namespace OnlineMarketPlace.Services
 {
     public class CategoryService
     {
-        // private readonly Guid _categoryId;
+        private readonly Guid _categoryId;
 
-        public CategoryService()
+        public CategoryService(Guid categoryId)
         {
-            //      _categoryId = categoryId;
+             _categoryId = categoryId;
         }
 
 
@@ -25,7 +25,10 @@ namespace OnlineMarketPlace.Services
             var entity =
                 new Category()
                 {
-
+                    CategoryId = model.CategoryId,
+                    Name = model.Name,
+                    Popularity = model.Popularity,
+                    PriceRange = model.PriceRange
                     //Name = model.Name,
 
 
@@ -43,14 +46,15 @@ namespace OnlineMarketPlace.Services
             {
                 var query =
                     ctx
-                        .Categories
-                        //  .Where(e => e.CategoryId == _categoryId)
+                   .Categories
+                   .Where(e => e.IdOfCategory == _categoryId)
                         .Select(
                             e =>
                                 new CategoryListItem
                                 {
                                     CategoryId = e.CategoryId,
                                     Name = e.Name,
+                                    
 
                                 }
                         );
@@ -58,6 +62,26 @@ namespace OnlineMarketPlace.Services
                 return query.ToArray();
             }
 
+        }
+
+        public CategoryDetail GetCategoryById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Categories
+                        .Single(e => e.CategoryId == id && e.IdOfCategory == _categoryId);
+                return
+                    new CategoryDetail
+                    {
+                        CategoryId = entity.CategoryId,
+                        Name = entity.Name,
+                        PriceRange = entity.PriceRange,
+                        Popularity = entity.Popularity,
+
+                    };
+            }
         }
 
         public bool UpdateCategory(CategoryEdit model, int categoryId)
@@ -69,8 +93,10 @@ namespace OnlineMarketPlace.Services
                         .Categories
                         .Single(e => e.CategoryId == model.CategoryId);
 
-                //entity.Name = model.Name;
+                entity.CategoryId = model.CategoryId;
+                entity.Name = model.Name;
                 entity.PriceRange = model.PriceRange;
+                entity.Popularity = model.Popularity;
 
 
                 return ctx.SaveChanges() == 1;

@@ -9,10 +9,14 @@ namespace OnlineMarketPlace.Models
 {
     public class ProductCreate
     {
-        public int Id { get; set; }
+        public int IdOfProduct { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
         public decimal Price { get; set; }
+        
+        public int? PersonID { get; set; }
+        [Required]
+        public int CategoryId { get; set; }
     }
 }

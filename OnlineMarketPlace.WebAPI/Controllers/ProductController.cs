@@ -44,5 +44,28 @@ namespace OnlineMarketPlace.WebAPI.Controllers
             var productService = new ProductService(productId);
             return productService;
         }
+
+        public IHttpActionResult Put(ProductEdit product)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateProductService();
+
+            if (!service.UpdateProduct(product))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateProductService();
+
+            if (!service.DeleteProduct(id))
+                return InternalServerError();
+
+            return Ok();
+        }
     }
 }
