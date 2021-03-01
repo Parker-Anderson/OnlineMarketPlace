@@ -10,8 +10,6 @@ namespace OnlineMarketPlace.Data
     public class Person
     {
 
-        
-        
         [Key]
         public int PersonId { get; set; }
         [Required]
@@ -20,8 +18,8 @@ namespace OnlineMarketPlace.Data
         public string Email { get; set; }
         [Required]
         public DateTime DateJoined { get; set; }
-        public Guid UserID { get; set; }
-        //[Required]
+        public Guid UserID { get; set; 
+        // [Required]
         //public UserRole Role { get; set; }
         //public enum UserRole
         //{
