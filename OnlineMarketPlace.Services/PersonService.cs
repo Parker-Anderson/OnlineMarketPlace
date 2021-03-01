@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace OnlineMarketPlace.Services
 {
-    public class UserService
+    public class PersonService
     {
         private readonly Guid _userId;
-        public UserService(Guid userId)
+        public PersonService(Guid userId)
         {
             _userId = userId;
         }
-        public bool CreateUser(UserCreate model)
+        public bool CreatePerson(PersonCreate model)
         {
             var entity =
-                new User()
+                new Person()
                 {
                     UserID = _userId,
                     Name = model.Name,
@@ -28,22 +28,22 @@ namespace OnlineMarketPlace.Services
                 };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Users.Add(entity);
+                ctx.Persons.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<UserListItem> GetUsers()
+        public IEnumerable<PersonListItem> GetPersons()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                    .Users
+                    .Persons
                     .Where(e => e.UserID == _userId)
                     .Select(
                         e =>
-                        new UserListItem
+                        new PersonListItem
                         {
                             PersonId = e.PersonId,
                             Name = e.Name,
@@ -55,16 +55,16 @@ namespace OnlineMarketPlace.Services
                 return query.ToArray();
             }
         }
-        public UserDetail GetUserById(int id)
+        public PersonDetail GetPersonById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Users
+                        .Persons
                         .Single(e => e.PersonId == id && e.UserID == _userId);
                 return
-                    new UserDetail
+                    new PersonDetail
                     {
                         PersonId = entity.PersonId,
                         Name = entity.Name,
@@ -74,13 +74,13 @@ namespace OnlineMarketPlace.Services
                     };
             }
         }
-        public bool UpdateUser(UserEdit model)
+        public bool UpdatePerson(PersonEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Users
+                        .Persons
                         .Single(e => e.PersonId == model.PersonId && e.UserID == _userId);
                 entity.PersonId = model.PersonId;
                 entity.Name = model.Name;
@@ -93,15 +93,15 @@ namespace OnlineMarketPlace.Services
 
             }
         }
-        public bool DeleteUser(int id)
+        public bool DeletePerson(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Users
+                        .Persons
                         .Single(e => e.PersonId == id && e.UserID == _userId);
-                ctx.Users.Remove(entity);
+                ctx.Persons.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
         }

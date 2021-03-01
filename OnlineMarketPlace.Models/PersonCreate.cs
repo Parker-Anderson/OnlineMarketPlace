@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static OnlineMarketPlace.Data.User;
+using static OnlineMarketPlace.Data.Person;
 
 namespace OnlineMarketPlace.Models
 {
-    public class UserEdit
+    public class PersonCreate
     {
-        public int PersonId { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Email { get; set; }
-        public UserRole Role { get; set; }
+        [Required]
+        public string Role { get; set; }
+        [Required]
         public DateTime DateJoined { get; set; }
-        public Guid UserID { get; set; }
+
     }
 }

@@ -11,48 +11,48 @@ using System.Web.Http;
 namespace OnlineMarketPlace.WebAPI.Controllers
 {
     [Authorize]
-    public class UserController : ApiController
+    public class PersonController : ApiController
     {
         public IHttpActionResult Get()
         {
-            UserService userService = CreateUserService();
-            var users = userService.GetUsers();
+            PersonService personService = CreatePersonService();
+            var users = personService.GetPersons();
             return Ok(users);
         }
-        public IHttpActionResult Post(UserCreate user)
+        public IHttpActionResult Post(PersonCreate person)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var service = CreateUserService();
-            if (!service.CreateUser(user))
+            var service = CreatePersonService();
+            if (!service.CreatePerson(person))
                 return InternalServerError();
             return Ok();
         }
-        private UserService CreateUserService()
+        private PersonService CreatePersonService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var userService = new UserService(userId);
-            return userService;
+            var personService = new PersonService(userId);
+            return personService;
         }
         public IHttpActionResult Get(int id)
         {
-            UserService userService = CreateUserService();
-            var user = userService.GetUserById(id);
+            PersonService userService = CreatePersonService();
+            var user = userService.GetPersonById(id);
             return Ok(user);
         }
-        public IHttpActionResult Put(UserEdit user)
+        public IHttpActionResult Put(PersonEdit person)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var service = CreateUserService();
-            if (!service.UpdateUser(user))
+            var service = CreatePersonService();
+            if (!service.UpdatePerson(person))
                 return InternalServerError();
             return Ok();
         }
         public IHttpActionResult Delete(int id)
         {
-            var service = CreateUserService();
-            if (!service.DeleteUser(id))
+            var service = CreatePersonService();
+            if (!service.DeletePerson(id))
                 return InternalServerError();
             return Ok();
         }

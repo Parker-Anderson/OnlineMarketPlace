@@ -28,7 +28,7 @@ namespace OnlineMarketPlace.Data
 
         [ForeignKey(nameof(User))]
         public int? PersonId { get; set; }
-        public virtual User User { get; set; }
+        public virtual Person User { get; set; }
 
 
         [ForeignKey(nameof(Product))]
