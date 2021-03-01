@@ -22,13 +22,25 @@ namespace OnlineMarketPlace.WebAPI.Controllers
             return categoryService;
 
         }
-
+        /// <summary>
+        /// Returns a detailed list of existing Categories.
+        /// </summary>
+        /// <returns>
+        /// int, string, CategoryType, double, double
+        /// </returns>
         public IHttpActionResult Get()
         {
             CategoryService categoryService = CreateCategoryService();
             var categories = categoryService.GetCategories();
             return Ok(categories);
         }
+        /// <summary>
+        /// Creates a new Category in the database.
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns>
+        /// string
+        /// </returns>
 
         public IHttpActionResult Post(CategoryCreate category)
         {
@@ -42,7 +54,14 @@ namespace OnlineMarketPlace.WebAPI.Controllers
 
             return Ok();
         }
-
+        /// <summary>
+        /// Allows updates for existing Category.
+        /// </summary>
+        /// <param name="category"></param>
+        /// <param name="categoryId"></param>
+        /// <returns>
+        /// 
+        /// </returns>
         public IHttpActionResult Put(CategoryEdit category, int categoryId)
         {
             if (!ModelState.IsValid)
@@ -55,7 +74,11 @@ namespace OnlineMarketPlace.WebAPI.Controllers
 
             return Ok();
         }
-
+        /// <summary>
+        /// Deletes an existing Category.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateCategoryService();

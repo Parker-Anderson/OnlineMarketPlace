@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace OnlineMarketPlace.Data
 {
-    public class User
+    public class Person
     {
 
-        
-        
+
+
         [Key]
         public int PersonId { get; set; }
         [Required]
@@ -21,13 +21,15 @@ namespace OnlineMarketPlace.Data
         [Required]
         public DateTime DateJoined { get; set; }
         public Guid UserID { get; set; }
-        [Required]
-        public UserRole Role { get; set; }
-        public enum UserRole
-        {
-          Buyer = 1,
-          Seller
-        }
+        // [Required]
+        //public UserRole Role { get; set; }
+        //public enum UserRole
+        //{
+        //  Buyer = 1,
+        //Seller
+        //}
+        public string Role { get; set; }
+
     }
 
 }

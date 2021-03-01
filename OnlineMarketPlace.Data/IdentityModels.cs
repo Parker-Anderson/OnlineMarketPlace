@@ -35,7 +35,7 @@ namespace OnlineMarketPlace.Data
         {
             return new ApplicationDbContext();
         }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Person> Persons { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 

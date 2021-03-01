@@ -75,10 +75,10 @@
     <Compile Include="TransactionDetail.cs" />
     <Compile Include="TransactionEdit.cs" />
     <Compile Include="TransactionListItem.cs" />
-    <Compile Include="UserCreate.cs" />
-    <Compile Include="UserDetail.cs" />
-    <Compile Include="UserEdit.cs" />
-    <Compile Include="UserListItem.cs" />
+    <Compile Include="PersonCreate.cs" />
+    <Compile Include="PersonDetail.cs" />
+    <Compile Include="PersonEdit.cs" />
+    <Compile Include="PersonListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

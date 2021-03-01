@@ -4,17 +4,17 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static OnlineMarketPlace.Data.User;
+using static OnlineMarketPlace.Data.Person;
 
 namespace OnlineMarketPlace.Models
 {
-    public class UserDetail
+    public class PersonDetail
     {
         public int PersonId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         [Display(Name = "Joined")]
         public DateTime DateJoined { get; set; }
-        public UserRole Role { get; set; }
+        public string Role { get; set; }
     }
 }

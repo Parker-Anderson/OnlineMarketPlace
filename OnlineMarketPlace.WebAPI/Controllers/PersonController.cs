@@ -11,15 +11,27 @@ using System.Web.Http;
 namespace OnlineMarketPlace.WebAPI.Controllers
 {
     [Authorize]
-    public class UserController : ApiController
+    public class PersonController : ApiController
     {
+        /// <summary>
+        /// Returns a detailed list of existing Persons.
+        /// </summary>
+        /// <returns>
+        /// string, string, DateTime, string
+        /// </returns>
         public IHttpActionResult Get()
         {
-            UserService userService = CreateUserService();
+            PersonService userService = CreateUserService();
             var users = userService.GetUsers();
             return Ok(users);
         }
-        public IHttpActionResult Post(UserCreate user)
+        /// <summary>
+        /// Creates a new Person in the database.
+        /// </summary>
+        /// <param name="user"></param>
+        /// 
+        /// <returns></returns>
+        public IHttpActionResult Post(PersonCreate user)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -28,19 +40,31 @@ namespace OnlineMarketPlace.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
-        private UserService CreateUserService()
+        private PersonService CreateUserService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var userService = new UserService(userId);
+            var userService = new PersonService(userId);
             return userService;
         }
+        /// <summary>
+        /// Returns an existing Person.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>
+        /// int, string, string, DateTime, string
+        /// </returns>
         public IHttpActionResult Get(int id)
         {
-            UserService userService = CreateUserService();
+            PersonService userService = CreateUserService();
             var user = userService.GetUserById(id);
             return Ok(user);
         }
-        public IHttpActionResult Put(UserEdit user)
+        /// <summary>
+        /// Allows updates for an existing Person.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public IHttpActionResult Put(PersonEdit user)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -49,6 +73,11 @@ namespace OnlineMarketPlace.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
+        /// <summary>
+        /// Deletes an existing Person.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateUserService();

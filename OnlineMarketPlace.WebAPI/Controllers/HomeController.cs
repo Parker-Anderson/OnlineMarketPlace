@@ -10,7 +10,7 @@ namespace OnlineMarketPlace.WebAPI.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "OnlineMarketPlace API";
 
             return View();
         }
