@@ -64,6 +64,7 @@ namespace OnlineMarketPlace.Data
         public IdentityUserRoleConfiguration()
         {
             HasKey(iur => iur.UserId);
+            
         }
     }
 }
