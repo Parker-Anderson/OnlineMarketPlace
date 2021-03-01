@@ -21,9 +21,9 @@ namespace OnlineMarketPlace.WebAPI.Controllers
         /// </returns>
         public IHttpActionResult Get()
         {
-            PersonService userService = CreateUserService();
-            var users = userService.GetUsers();
-            return Ok(users);
+            PersonService personService = CreatePersonService();
+            var persons = personService.GetPersons();
+            return Ok(persons);
         }
         /// <summary>
         /// Creates a new Person in the database.
@@ -31,20 +31,20 @@ namespace OnlineMarketPlace.WebAPI.Controllers
         /// <param name="user"></param>
         /// 
         /// <returns></returns>
-        public IHttpActionResult Post(PersonCreate user)
+        public IHttpActionResult Post(PersonCreate person)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var service = CreateUserService();
-            if (!service.CreateUser(user))
+            var service = CreatePersonService();
+            if (!service.CreatePerson(person))
                 return InternalServerError();
             return Ok();
         }
-        private PersonService CreateUserService()
+        private PersonService CreatePersonService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var userService = new PersonService(userId);
-            return userService;
+            var userId = Guid.Parse(User.Identity.GetUserId());\
+            var personService = new PersonService(userId);
+            return personService;
         }
         /// <summary>
         /// Returns an existing Person.
@@ -55,21 +55,21 @@ namespace OnlineMarketPlace.WebAPI.Controllers
         /// </returns>
         public IHttpActionResult Get(int id)
         {
-            PersonService userService = CreateUserService();
-            var user = userService.GetUserById(id);
-            return Ok(user);
+            PersonService personService = CreatePersonService();
+            var person = personService.GetPersonById(id);
+            return Ok(person);
         }
         /// <summary>
         /// Allows updates for an existing Person.
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="person"></param>
         /// <returns></returns>
-        public IHttpActionResult Put(PersonEdit user)
+        public IHttpActionResult Put(PersonEdit person)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var service = CreateUserService();
-            if (!service.UpdateUser(user))
+            var service = CreatePersonService();
+            if (!service.UpdatePerson(person))
                 return InternalServerError();
             return Ok();
         }
@@ -80,8 +80,8 @@ namespace OnlineMarketPlace.WebAPI.Controllers
         /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
-            var service = CreateUserService();
-            if (!service.DeleteUser(id))
+            var service = CreatePersonService();
+            if (!service.DeletePerson(id))
                 return InternalServerError();
             return Ok();
         }

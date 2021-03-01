@@ -666,7 +666,7 @@
             <summary>
             Allows updates for an existing Person.
             </summary>
-            <param name="user"></param>
+            <param name="person"></param>
             <returns></returns>
         </member>
         <member name="M:OnlineMarketPlace.WebAPI.Controllers.PersonController.Delete(System.Int32)">

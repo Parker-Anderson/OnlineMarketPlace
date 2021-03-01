@@ -15,7 +15,7 @@ namespace OnlineMarketPlace.Services
         {
             _userId = userId;
         }
-        public bool CreateUser(PersonCreate model)
+        public bool CreatePerson(PersonCreate model)
         {
             var entity =
                 new Person()
@@ -33,7 +33,7 @@ namespace OnlineMarketPlace.Services
             }
         }
 
-        public IEnumerable<PersonListItem> GetUsers()
+        public IEnumerable<PersonListItem> GetPersons()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -55,7 +55,7 @@ namespace OnlineMarketPlace.Services
                 return query.ToArray();
             }
         }
-        public PersonDetail GetUserById(int id)
+        public PersonDetail GetPersonById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -74,7 +74,7 @@ namespace OnlineMarketPlace.Services
                     };
             }
         }
-        public bool UpdateUser(PersonEdit model)
+        public bool UpdatePerson(PersonEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -93,7 +93,7 @@ namespace OnlineMarketPlace.Services
 
             }
         }
-        public bool DeleteUser(int id)
+        public bool DeletePerson(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
