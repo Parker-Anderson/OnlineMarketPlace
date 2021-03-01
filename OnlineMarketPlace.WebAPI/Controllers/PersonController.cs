@@ -42,11 +42,11 @@ namespace OnlineMarketPlace.WebAPI.Controllers
         }
         private PersonService CreatePersonService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());\
+            var userId = Guid.Parse(User.Identity.GetUserId());
             var personService = new PersonService(userId);
             return personService;
         }
-        /// <summary>
+         /// <summary>
         /// Returns an existing Person.
         /// </summary>
         /// <param name="id"></param>
@@ -55,9 +55,9 @@ namespace OnlineMarketPlace.WebAPI.Controllers
         /// </returns>
         public IHttpActionResult Get(int id)
         {
-            PersonService personService = CreatePersonService();
-            var person = personService.GetPersonById(id);
-            return Ok(person);
+            PersonService userService = CreatePersonService();
+            var user = userService.GetPersonById(id);
+            return Ok(user);
         }
         /// <summary>
         /// Allows updates for an existing Person.
@@ -85,7 +85,5 @@ namespace OnlineMarketPlace.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
-
-
     }
 }
