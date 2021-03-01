@@ -18,7 +18,7 @@ namespace OnlineMarketPlace.Data
         public string Email { get; set; }
         [Required]
         public DateTime DateJoined { get; set; }
-        public Guid UserID { get; set; 
+        public Guid UserID { get; set; }
         // [Required]
         //public UserRole Role { get; set; }
         //public enum UserRole
