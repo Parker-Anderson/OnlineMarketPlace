@@ -28,7 +28,7 @@ namespace OnlineMarketPlace.WebAPI.Controllers
         /// <summary>
         /// Creates a new Person in the database.
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="person"></param>
         /// 
         /// <returns></returns>
         public IHttpActionResult Post(PersonCreate person)
