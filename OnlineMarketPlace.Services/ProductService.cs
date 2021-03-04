@@ -17,7 +17,7 @@ namespace OnlineMarketPlace.Services
                 var query =
                     ctx
                         .Products
-                        .Where(e => e.ProductId == _productId)
+                        //.Where(e => e.ProductId == _productId)
                         .Select(
                             e =>
                                 new ProductListItem
@@ -31,11 +31,11 @@ namespace OnlineMarketPlace.Services
                 return query.ToArray();
             }
         }
-        private readonly Guid _productId;
+        //private readonly Guid _productId;
 
         public ProductService(Guid productId)
         {
-            _productId = productId;
+       //     _productId = productId;
         }
 
         public bool CreateProduct(ProductCreate model)
