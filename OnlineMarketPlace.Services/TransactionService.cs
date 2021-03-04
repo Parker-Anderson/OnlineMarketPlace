@@ -10,11 +10,11 @@ namespace OnlineMarketPlace.Services
 {
     public class TransactionService
     {
-        private readonly Guid _userId;
+        //private readonly Guid _userId;
 
         public TransactionService(Guid userId)
         {
-            _userId = userId;
+          //  _userId = userId;
         }
         public bool CreateTransaction(TransactionCreate trans)
         {
@@ -37,7 +37,7 @@ namespace OnlineMarketPlace.Services
             {
                 var query = ctx
                     .Transactions
-                    .Where(e => e.TransactionId == _userId)
+            //        .Where(e => e.TransactionId == _userId)
                     .Select(e => new TransactionListItem
                     {
                         Id = e.Id,
@@ -55,7 +55,7 @@ namespace OnlineMarketPlace.Services
             {
                 var entity = ctx
                       .Transactions
-                      .Single(e => e.Id == id && e.TransactionId == _userId);
+                      .Single(e => e.Id == id);
                 return new TransactionDetail
                 {
                     Id = entity.Id,
@@ -71,7 +71,7 @@ namespace OnlineMarketPlace.Services
             {
                 var entity = ctx
                     .Transactions
-                    .Single(e => e.Id == trans.Id && e.TransactionId == _userId);
+                    .Single(e => e.Id == trans.Id);
 
                 entity.Id = trans.Id;
                 entity.Cost = trans.Cost;
@@ -89,7 +89,7 @@ namespace OnlineMarketPlace.Services
             {
                 var entity = ctx
                     .Transactions
-                    .Single(e => e.Id == id && e.TransactionId == _userId);
+                    .Single(e => e.Id == id);
 
                 ctx.Transactions.Remove(entity);
 
