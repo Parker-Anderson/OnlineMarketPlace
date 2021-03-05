@@ -37,6 +37,32 @@ namespace OnlineMarketPlaceAPI.UI.ViewModels
                 NotifyOfPropertyChange(() => CanLogIn);
             } 
         }
+   
+        public bool IsErrorVisible
+        {
+            get 
+            {
+                bool output = false;
+                if (ErrorMessage?.Length > 0)
+                {
+                    output = true;
+                }
+                return output;
+            }
+            
+
+        }
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = value;
+                NotifyOfPropertyChange(() => IsErrorVisible);
+                NotifyOfPropertyChange(() => ErrorMessage);
+            }
+        }
         public bool CanLogIn
         {
             get
@@ -48,11 +74,19 @@ namespace OnlineMarketPlaceAPI.UI.ViewModels
                 }
                 return output;
             }
-            }
+        }
 
         public async Task LogIn()
         {
-           var result = await _apiHelper.Authenticate(Username, Password);
+            try
+            {
+                ErrorMessage = "";
+                var result = await _apiHelper.Authenticate(Username, Password);
+            }
+            catch(Exception ex)
+            {
+                ErrorMessage = ex.Message;
+            }
         }
     }
 }
