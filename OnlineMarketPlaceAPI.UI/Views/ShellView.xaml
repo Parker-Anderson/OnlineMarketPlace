@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OnlineMarketPlaceAPI.UI.Views"
         mc:Ignorable="d"
-        Title="ShellView" Height="426.563" Width="662.188">
+        Title="OnlineMarketPlace API" Height="426.563" Width="662.188">
     <DockPanel>
         <Menu DockPanel.Dock="Top" FontSize="18">
             <MenuItem Header="_File">

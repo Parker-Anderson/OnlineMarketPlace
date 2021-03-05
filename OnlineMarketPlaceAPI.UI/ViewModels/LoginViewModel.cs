@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using OnlineMarketPlaceAPI.UI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,11 @@ namespace OnlineMarketPlaceAPI.UI.ViewModels
     {
         private string _username;
         private string _password;
+        private IAPIHelper _apiHelper;
+        public LoginViewModel(IAPIHelper apiHelper)
+        {
+            _apiHelper = apiHelper;
+        }
         public string Username 
         {
             get { return _username; } 
@@ -44,9 +50,9 @@ namespace OnlineMarketPlaceAPI.UI.ViewModels
             }
             }
 
-        public void LogIn()
+        public async Task LogIn()
         {
-            Console.WriteLine();
+           var result = await _apiHelper.Authenticate(Username, Password);
         }
     }
 }

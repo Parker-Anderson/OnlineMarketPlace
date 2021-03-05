@@ -8,6 +8,7 @@ using System.Windows;
 using OnlineMarketPlaceAPI.UI.Views;
 using OnlineMarketPlaceAPI.UI.ViewModels;
 using System.Windows.Controls;
+using OnlineMarketPlaceAPI.UI.Helpers;
 
 namespace OnlineMarketPlaceAPI.UI
 {
@@ -27,7 +28,9 @@ namespace OnlineMarketPlaceAPI.UI
             _container.Instance(_container);
             _container
                 .Singleton<IWindowManager, WindowManager>()
-                .Singleton<IEventAggregator, EventAggregator>();
+                .Singleton<IEventAggregator, EventAggregator>()
+                .Singleton<IAPIHelper, APIHelper>();
+                
        
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)
