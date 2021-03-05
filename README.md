@@ -17,9 +17,16 @@ To contribute to the project/access the API:
 ![](Images/SolutionExplorer.PNG)
 3. Run the program by selecting the play button at the top and you should be directed to the API page and have access to all of the endpoints
 ![](Images/Start.PNG)
+4. Now that you have access to the endpoints you can view and use them to create(post), read(get), upadate(put), and delete(delete) databases for the Online MarketPlace inside Visual Studio.
+5. Choose the endpoint you wish to use and be sure to enter all the required fields in Postman.
 
 ## _Credentials and GitHubs_
 - Mary Carole Scannnell
 - Parker Anderson (https://github.com/Parker-Anderson)
 - Tulha Alsalah 
 - Seth Thomas (https://github.com/Seth-Thomas)
+
+## _Resources_
+- Visual Studio
+- Postman
+- GitHub
