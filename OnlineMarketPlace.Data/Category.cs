@@ -23,7 +23,7 @@ namespace OnlineMarketPlace.Data
     {
         
         public int? CategoryId { get; set; }
-        public CategoryType Name { get; set; }
+        public string Name { get; set; }
         public double Popularity { get; set; }
 
         public double PriceRange { get; set; }
