@@ -25,11 +25,14 @@ namespace OnlineMarketPlace.Services
             var entity =
                 new Category()
                 {
+                    CategoryId = model.CategoryId,
+                    Name = model.Name,
+                    Popularity = model.Popularity,
+                    PriceRange = model.PriceRange
+                   
 
-                    //Name = model.Name,
 
-
-                };
+                 };
 
             using (var ctx = new ApplicationDbContext())
             {
@@ -69,8 +72,10 @@ namespace OnlineMarketPlace.Services
                         .Categories
                         .Single(e => e.CategoryId == model.CategoryId);
 
-                //entity.Name = model.Name;
+                entity.Name = model.Name;
                 entity.PriceRange = model.PriceRange;
+                entity.CategoryId = model.CategoryId;
+                entity.Popularity = model.Popularity;
 
 
                 return ctx.SaveChanges() == 1;
