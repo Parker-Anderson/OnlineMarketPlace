@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using OnlineMarketPlace;
 
 namespace OnlineMarketPlace.Data
 {
@@ -21,8 +22,16 @@ namespace OnlineMarketPlace.Data
         }
     }
 
+    public class ApplicationRole : IdentityRole
+    {
+        public ApplicationRole() : base() { }
+        public ApplicationRole(string roleName) : base(roleName) { }
+    }
+    
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        //public readonly IEnumerable<object> Categories;
+       
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -32,9 +41,11 @@ namespace OnlineMarketPlace.Data
         {
             return new ApplicationDbContext();
         }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Person> Persons { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
@@ -46,6 +57,8 @@ namespace OnlineMarketPlace.Data
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
         }
+
+       
     }
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
     {
@@ -59,6 +72,7 @@ namespace OnlineMarketPlace.Data
         public IdentityUserRoleConfiguration()
         {
             HasKey(iur => iur.UserId);
+            
         }
     }
 }
