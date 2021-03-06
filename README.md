@@ -27,6 +27,8 @@ To contribute to the project/access the API:
 - Seth Thomas (https://github.com/Seth-Thomas)
 
 ## _Resources_
-- Visual Studio
-- Postman
-- GitHub
+- [Visual Studio](https://visualstudio.microsoft.com/)
+- [Postman](https://www.postman.com/) 
+- [GitHub](https://github.com/)
+- [Stack Overflow](https://stackoverflow.com/questions/17127351/introducing-foreign-key-constraint-may-cause-cycles-or-multiple-cascade-paths) to address nullabel foreign keys
+- 
