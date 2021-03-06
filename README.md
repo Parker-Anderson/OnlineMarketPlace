@@ -21,7 +21,7 @@ To contribute to the project/access the API:
 5. Choose the endpoint you wish to use and be sure to enter all the required fields in Postman.
 
 ## _Credentials and GitHubs_
-- Mary Carole Scannnell
+- Mary Carole Scannnell (https://github.com/MaryCaroleScannnell)
 - Parker Anderson (https://github.com/Parker-Anderson)
 - Tulha Alsalah 
 - Seth Thomas (https://github.com/Seth-Thomas)
@@ -31,4 +31,7 @@ To contribute to the project/access the API:
 - [Postman](https://www.postman.com/) 
 - [GitHub](https://github.com/)
 - [Stack Overflow](https://stackoverflow.com/questions/17127351/introducing-foreign-key-constraint-may-cause-cycles-or-multiple-cascade-paths) to address nullabel foreign keys
-- 
+- [Stack Overflow](https://stackoverflow.com/questions/16905818/could-not-load-file-or-assembly-entityframework#16922177) for help using Entity Framework
+- This [Youtube video](https://www.youtube.com/watch?v=IngL0-alQYk) for adding to roles in ASP.Net
+- [IamTimCorey](https://www.youtube.com/watch?v=Xtt6mS0p2_c&list=PLLWMQd6PeGY0bEMxObA6dtYXuJOGfxSPx) on YouTube
+- [Microsoft Docs](https://docs.microsoft.com/en-us/previous-versions/aspnet/9ab2fxh0(v=vs.100)) for user role management 
