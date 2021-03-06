@@ -13,10 +13,7 @@ namespace OnlineMarketPlace.Data
         
         
         [Key]
-        public int ID { get; set; }
-
-        public int integer { get; set; }
-
+        public int PersonID { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -33,6 +30,7 @@ namespace OnlineMarketPlace.Data
         //  Buyer = 1,
         //  Seller
         //}
+        
     }
 
 }

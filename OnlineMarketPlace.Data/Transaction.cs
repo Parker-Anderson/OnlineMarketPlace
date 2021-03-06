@@ -26,15 +26,27 @@ namespace OnlineMarketPlace.Data
 
 
 
-        //[ForeignKey(nameof(User))]
-        //public int UserId { get; set; }
-        //public virtual User User { get; set; }
+        [ForeignKey(nameof(User))]
+        public int? PersonID { get; set; }
+        public virtual User User { get; set; }
+        public decimal Cost { get; set; }
 
+        [ForeignKey(nameof(Products))]
+        public int? IdOfProduct { get; set; }
+        public virtual Product Products { get; set; }
 
-        // [ForeignKey(nameof(Product))]
-        public double Cost { get; set; }
-        public virtual Product Product { get; set; }
+       // public double ProductCost
+      //   {
+        //     get 
+         //   {
+         //       double totalCost = 0;
 
+           //     foreach (var cost in Products)
+           //     { totalCost += cost.Product;}
+
+       //         return totalCost ++ Products.Count;
+        //   }
+       //  }
         //[ForeignKey(nameof(Product))]
         // public double Cost { get; set; }
         //public virtual Product Product { get; set; }

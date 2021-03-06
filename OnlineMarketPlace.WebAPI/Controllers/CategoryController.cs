@@ -17,8 +17,8 @@ namespace OnlineMarketPlace.WebAPI.Controllers
         {
 
 
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var categoryService = new CategoryService();
+            var categoryId = Guid.Parse(User.Identity.GetUserId());
+            var categoryService = new CategoryService(categoryId);
             return categoryService;
 
         }

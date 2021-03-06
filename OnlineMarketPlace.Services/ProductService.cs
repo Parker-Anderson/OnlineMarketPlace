@@ -22,13 +22,33 @@ namespace OnlineMarketPlace.Services
                             e =>
                                 new ProductListItem
                                 {
-                                    Id = e.ID,
+                                    IdOfProduct = e.IdOfProduct,
                                     Name = e.Name,
                                     Price = e.Price
                                 }
                         );
 
                 return query.ToArray();
+            }
+        }
+        public ProductDetail GetProductById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Products
+                        .Single(e => e.ProductId  == _productId);
+                return
+                    new ProductDetail
+                    {
+                        IdOfProduct = entity.IdOfProduct,
+                        Name = entity.Name,
+                        Price = entity.Price,
+                        HowLongOnMarket = entity.HowLongOnMarket,
+                        Description = entity.Description,
+                        CategoryId = entity.CategoryId
+                    };
             }
         }
         private readonly Guid _productId;
@@ -45,7 +65,11 @@ namespace OnlineMarketPlace.Services
                 {
 
                     Name = model.Name,
-                    Price = model.Price
+                    Price = model.Price,
+                    Description = model.Description,
+                    PersonID = model.PersonID,
+                    CategoryId = model.CategoryId
+                    
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -55,6 +79,38 @@ namespace OnlineMarketPlace.Services
             }
 
 
+        }
+        public bool UpdateProduct(ProductEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Products
+                        .Single(e => e.IdOfProduct == model.IdOfProduct && e.ProductId == _productId);
+
+                entity.Name = model.Name;
+                entity.Price = model.Price;
+                entity.Description = model.Description;
+
+
+                return ctx.SaveChanges() == 1;
+
+            }   
+        }
+        public bool DeleteProduct(int productId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Products
+                        .Single(e => e.IdOfProduct == productId && e.ProductId == _productId);
+
+                ctx.Products.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
         }
     }
 
