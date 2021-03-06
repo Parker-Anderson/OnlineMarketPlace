@@ -27,6 +27,7 @@ To contribute to the project/access the API:
 - Seth Thomas (https://github.com/Seth-Thomas)
 
 ## _Resources_
+- Our wonderful teachers
 - [Visual Studio](https://visualstudio.microsoft.com/)
 - [Postman](https://www.postman.com/) 
 - [GitHub](https://github.com/)
