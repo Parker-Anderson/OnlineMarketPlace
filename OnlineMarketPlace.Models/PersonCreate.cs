@@ -18,6 +18,7 @@ namespace OnlineMarketPlace.Models
         public string Role { get; set; }
         [Required]
         public DateTime DateJoined { get; set; }
+     
 
     }
 }

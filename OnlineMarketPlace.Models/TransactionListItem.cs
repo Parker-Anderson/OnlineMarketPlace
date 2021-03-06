@@ -11,6 +11,7 @@ namespace OnlineMarketPlace.Models
     {
         public int Id { get; set; }
         public decimal Cost { get; set; }
+        public int? ProductId { get; set; }
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
         public enum PaymentMethod

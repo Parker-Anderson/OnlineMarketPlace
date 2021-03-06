@@ -23,7 +23,7 @@ namespace OnlineMarketPlace.Services
                 Id = trans.Id,
                 Cost = trans.Cost,
                 PersonId = trans.PersonId,
-                //ProductId = trans.ProductId
+                ProductId = trans.ProductId
             };
             using (var ctx = new ApplicationDbContext())
             {

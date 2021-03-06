@@ -10,6 +10,10 @@ namespace OnlineMarketPlace.Services
 {
     public class ProductService
     {
+        public ProductService(Guid id)
+        {
+
+        }
         public IEnumerable<ProductListItem> GetProduct()
         {
             using (var ctx = new ApplicationDbContext())
@@ -31,13 +35,28 @@ namespace OnlineMarketPlace.Services
                 return query.ToArray();
             }
         }
-        //private readonly Guid _productId;
-
-        public ProductService(Guid productId)
+        public ProductDetail GetProductById(int id)
         {
-       //     _productId = productId;
-        }
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Products
+                .Single(e => e.ID == id);
+                return
+                    new ProductDetail
+                    {
+                        ID = entity.ID,
+                        Name = entity.Name,
+                        Price = entity.Price,
+                        HowLongOnMarket = entity.HowLongOnMarket,
+                        Description = entity.Description,
+                        CategoryId = entity.CategoryId
+                    };
+            }
 
+
+        }
         public bool CreateProduct(ProductCreate model)
         {
             var entity =
@@ -46,6 +65,7 @@ namespace OnlineMarketPlace.Services
 
                     Name = model.Name,
                     Price = model.Price,
+                    Description = model.Description,
                     PersonId = model.PersonId,
                     CategoryId = model.CategoryId
                 };
@@ -58,6 +78,38 @@ namespace OnlineMarketPlace.Services
 
 
         }
-    }
+        public bool UpdateProduct(ProductEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Products
+                        .Single(e => e.ID == model.IdOfProduct);
 
+                entity.Name = model.Name;
+                entity.Price = model.Price;
+                entity.Description = model.Description;
+
+
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+
+        public bool DeleteProduct(int productId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Products
+                        .Single(e => e.ID == productId);
+
+                ctx.Products.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+    }
 }
