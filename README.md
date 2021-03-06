@@ -30,7 +30,7 @@ To contribute to the project/access the API:
 - [Visual Studio](https://visualstudio.microsoft.com/)
 - [Postman](https://www.postman.com/) 
 - [GitHub](https://github.com/)
-- [Stack Overflow](https://stackoverflow.com/questions/17127351/introducing-foreign-key-constraint-may-cause-cycles-or-multiple-cascade-paths) to address nullabel foreign keys
+- [Stack Overflow](https://stackoverflow.com/questions/17127351/introducing-foreign-key-constraint-may-cause-cycles-or-multiple-cascade-paths) to address nullable foreign keys
 - [Stack Overflow](https://stackoverflow.com/questions/16905818/could-not-load-file-or-assembly-entityframework#16922177) for help using Entity Framework
 - This [Youtube video](https://www.youtube.com/watch?v=IngL0-alQYk) for adding to roles in ASP.Net
 - [IamTimCorey](https://www.youtube.com/watch?v=Xtt6mS0p2_c&list=PLLWMQd6PeGY0bEMxObA6dtYXuJOGfxSPx) on YouTube
