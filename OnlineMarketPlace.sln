@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarketPlace.Services"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarketPlace.Models", "OnlineMarketPlace.Models\OnlineMarketPlace.Models.csproj", "{49364FB6-5246-412B-9C78-6F60B86D27F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarketPlaceAPI.UI", "OnlineMarketPlaceAPI.UI\OnlineMarketPlaceAPI.UI.csproj", "{8419D014-601A-4D73-AB0B-762D3048D8C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{49364FB6-5246-412B-9C78-6F60B86D27F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49364FB6-5246-412B-9C78-6F60B86D27F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49364FB6-5246-412B-9C78-6F60B86D27F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8419D014-601A-4D73-AB0B-762D3048D8C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8419D014-601A-4D73-AB0B-762D3048D8C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8419D014-601A-4D73-AB0B-762D3048D8C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8419D014-601A-4D73-AB0B-762D3048D8C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
