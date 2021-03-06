@@ -606,6 +606,27 @@
             <param name="product"></param>
             <returns></returns>
         </member>
+        <member name="M:OnlineMarketPlace.WebAPI.Controllers.ProductController.Get(System.Int32)">
+            <summary>
+            Returns a single Product, specified by Id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OnlineMarketPlace.WebAPI.Controllers.ProductController.Put(OnlineMarketPlace.Models.ProductEdit)">
+            <summary>
+            Enables updates for an existing Product
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OnlineMarketPlace.WebAPI.Controllers.ProductController.Delete(System.Int32)">
+            <summary>
+            Deletes an existing Product.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:OnlineMarketPlace.WebAPI.Controllers.TransactionController.Get">
             <summary>
             Returns a detailed list of existing Transactions
