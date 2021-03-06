@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace OnlineMarketPlace.WebAPI.Controllers
 {
+    [Authorize(Roles = "Admin,Buyer,Seller")]
     public class CategoryController : ApiController
     {
         private CategoryService CreateCategoryService()

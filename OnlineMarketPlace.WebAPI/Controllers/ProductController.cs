@@ -11,7 +11,7 @@ using System.Web.Http;
 
 namespace OnlineMarketPlace.WebAPI.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin, Buyer, Seller")]
     public class ProductController : ApiController
     {
         /// <summary>

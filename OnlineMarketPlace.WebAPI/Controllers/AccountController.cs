@@ -26,7 +26,7 @@ using RoutePrefixAttribute = System.Web.Http.RoutePrefixAttribute;
 
 namespace OnlineMarketPlace.WebAPI.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {

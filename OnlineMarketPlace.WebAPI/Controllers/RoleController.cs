@@ -10,6 +10,7 @@ using OnlineMarketPlace.WebAPI.Models;
 
 namespace OnlineMarketPlace.WebAPI.Controllers
 {
+    
     public class RoleController : Controller
     {
         private ApplicationRoleManager _roleManager;

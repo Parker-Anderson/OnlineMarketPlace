@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace OnlineMarketPlace.WebAPI.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class PersonController : ApiController
     {
         /// <summary>
