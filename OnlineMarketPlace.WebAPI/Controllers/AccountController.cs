@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
+using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -17,6 +18,11 @@ using OnlineMarketPlace.Data;
 using OnlineMarketPlace.WebAPI.Models;
 using OnlineMarketPlace.WebAPI.Providers;
 using OnlineMarketPlace.WebAPI.Results;
+using AllowAnonymousAttribute = System.Web.Http.AllowAnonymousAttribute;
+using AuthorizeAttribute = System.Web.Http.AuthorizeAttribute;
+using OverrideAuthenticationAttribute = System.Web.Http.OverrideAuthenticationAttribute;
+using RouteAttribute = System.Web.Http.RouteAttribute;
+using RoutePrefixAttribute = System.Web.Http.RoutePrefixAttribute;
 
 namespace OnlineMarketPlace.WebAPI.Controllers
 {
@@ -27,16 +33,30 @@ namespace OnlineMarketPlace.WebAPI.Controllers
    
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager,
+        public AccountController(ApplicationUserManager userManager, ApplicationRoleManager roleManager,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
         {
             UserManager = userManager;
+            RoleManager = roleManager;
             AccessTokenFormat = accessTokenFormat;
+        }
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? Request.GetOwinContext().Get<ApplicationRoleManager>();
+                
+            }
+            private set
+            {
+                _roleManager = value;
+            }
         }
 
         public ApplicationUserManager UserManager
@@ -356,6 +376,7 @@ namespace OnlineMarketPlace.WebAPI.Controllers
 
             return logins;
         }
+      
         /// <summary>
         /// 
         /// </summary>
@@ -379,7 +400,7 @@ namespace OnlineMarketPlace.WebAPI.Controllers
             {
                 return GetErrorResult(result);
             }
-
+            result = await UserManager.AddToRolesAsync(user.Id, model.RoleName);
             return Ok();
         }
         /// <summary>
