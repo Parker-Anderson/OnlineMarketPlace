@@ -11,6 +11,7 @@ using Owin;
 using OnlineMarketPlace.WebAPI.Providers;
 using OnlineMarketPlace.WebAPI.Models;
 using OnlineMarketPlace.Data;
+using static OnlineMarketPlace.WebAPI.ApplicationUserManager;
 
 namespace OnlineMarketPlace.WebAPI
 {
@@ -26,6 +27,7 @@ namespace OnlineMarketPlace.WebAPI
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using OnlineMarketPlace;
 
 namespace OnlineMarketPlace.Data
 {
@@ -21,6 +22,11 @@ namespace OnlineMarketPlace.Data
         }
     }
 
+    public class ApplicationRole : IdentityRole
+    {
+        public ApplicationRole() : base() { }
+        public ApplicationRole(string roleName) : base(roleName) { }
+    }
     
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -51,6 +57,8 @@ namespace OnlineMarketPlace.Data
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
         }
+
+       
     }
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
     {
