@@ -12,11 +12,11 @@ namespace OnlineMarketPlace.Services
 {
     public class CategoryService
     {
-        private readonly Guid _categoryId;
+        // private readonly Guid _categoryId;
 
         public CategoryService(Guid categoryId)
         {
-             _categoryId = categoryId;
+       //      _categoryId = categoryId;
         }
 
 
@@ -47,7 +47,7 @@ namespace OnlineMarketPlace.Services
                 var query =
                     ctx
                    .Categories
-                   .Where(e => e.IdOfCategory == _categoryId)
+                  // .Where(e => e.IdOfCategory == _categoryId)
                         .Select(
                             e =>
                                 new CategoryListItem
@@ -71,7 +71,7 @@ namespace OnlineMarketPlace.Services
                 var entity =
                     ctx
                         .Categories
-                        .Single(e => e.CategoryId == id && e.IdOfCategory == _categoryId);
+                        .Single(e => e.CategoryId == id );
                 return
                     new CategoryDetail
                     {

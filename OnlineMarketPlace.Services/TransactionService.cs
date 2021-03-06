@@ -10,18 +10,18 @@ namespace OnlineMarketPlace.Services
 {
     public class TransactionService
     {
-        private readonly Guid _userId;
+        //private readonly Guid _userId;
 
         public TransactionService(Guid userId)
         {
-            _userId = userId;
+           // _userId = userId;
         }
         public bool CreateTransaction(TransactionCreate trans)
         {
             var entity = new Transaction()
             {
                 Id = trans.Id,
-                //Cost = trans.Cost,
+                Cost = trans.Cost,
                 PersonID = trans.PersonID,
                 IdOfProduct = trans.IdOfProduct
 
@@ -38,11 +38,11 @@ namespace OnlineMarketPlace.Services
             {
                 var query = ctx
                     .Transactions
-                    .Where(e => e.TransactionId == _userId)
+            //        .Where(e => e.TransactionId == _userId)
                     .Select(e => new TransactionListItem
                     {
                         Id = e.Id,
-                        //Cost = e.Cost,
+                        Cost = e.Cost,
                         CreatedUtc = e.CreatedUtc
                     }
                     );
@@ -56,11 +56,11 @@ namespace OnlineMarketPlace.Services
             {
                 var entity = ctx
                       .Transactions
-                      .Single(e => e.Id == id && e.TransactionId == _userId);
+                      .Single(e => e.Id == id );
                 return new TransactionDetail
                 {
                     Id = entity.Id,
-                    //Cost = entity.Cost,
+                    Cost = entity.Cost,
                     CreatedUtc = entity.CreatedUtc,
                     ModifiedUtc = entity.ModifiedUtc
                 };
@@ -72,11 +72,12 @@ namespace OnlineMarketPlace.Services
             {
                 var entity = ctx
                     .Transactions
-                    .Single(e => e.Id == trans.Id && e.TransactionId == _userId);
+                    .Single(e => e.Id == trans.Id );
 
                 entity.Id = trans.Id;
-                //entity.Cost = trans.Cost;
+                entity.Cost = trans.Cost;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                
 
                 return ctx.SaveChanges() == 1;
             }
@@ -87,7 +88,7 @@ namespace OnlineMarketPlace.Services
             {
                 var entity = ctx
                     .Transactions
-                    .Single(e => e.Id == id && e.TransactionId == _userId);
+                    .Single(e => e.Id == id);
 
                 ctx.Transactions.Remove(entity);
 

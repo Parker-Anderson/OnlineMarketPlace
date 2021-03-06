@@ -17,6 +17,7 @@ namespace OnlineMarketPlace.Models
             PayPal
         }
         public int Id { get; set; }
+        public decimal Cost { get; set; }
         public int IdOfProduct { get; set; }
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }

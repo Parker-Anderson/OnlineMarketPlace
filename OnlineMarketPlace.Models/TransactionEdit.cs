@@ -9,9 +9,9 @@ namespace OnlineMarketPlace.Models
     public class TransactionEdit
     {
         public int Id { get; set; }
-        public double Cost { get; set; }
-
-        public int IdOfProduct { get; set; }
+        public decimal Cost { get; set; }
+        public int? PersonID { get; set; }
+        public int? IdOfProduct { get; set; }
 
 
         // Anything else?

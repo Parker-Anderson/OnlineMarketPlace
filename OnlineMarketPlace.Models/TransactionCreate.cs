@@ -11,8 +11,8 @@ namespace OnlineMarketPlace.Models
     {
         [Required]
         public int Id { get; set; }
-       
 
+        public decimal Cost { get; set; }
         public int IdOfProduct { get; set; }
         public int? PersonID { get; set; }
         // Add anything else?

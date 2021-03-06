@@ -30,6 +30,7 @@ namespace OnlineMarketPlace.Data
         //  Buyer = 1,
         //  Seller
         //}
+        
     }
 
 }

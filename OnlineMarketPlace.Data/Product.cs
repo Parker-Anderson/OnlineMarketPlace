@@ -28,7 +28,7 @@ namespace OnlineMarketPlace.Data
         public virtual User User { get; set; }
 
         [ForeignKey(nameof(Category))]
-        public int CategoryId {get; set;}
+        public int? CategoryId {get; set;}
         public virtual Category Category {get; set;}
 
 
