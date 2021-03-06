@@ -6,11 +6,12 @@ using System.Web.Mvc;
 
 namespace OnlineMarketPlace.WebAPI.Controllers
 {
+    
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "OnlineMarketPlace API";
 
             return View();
         }

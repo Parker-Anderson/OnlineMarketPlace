@@ -1,0 +1,21 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="OnlineMarketPlace.WebAPI.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <h1 style="width: 488px; height: 39px">OnlineMarketPlace API Roles Page</h1>
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <h1>&nbsp;</h1>
+</body>
+</html>

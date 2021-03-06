@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
+using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -17,25 +18,45 @@ using OnlineMarketPlace.Data;
 using OnlineMarketPlace.WebAPI.Models;
 using OnlineMarketPlace.WebAPI.Providers;
 using OnlineMarketPlace.WebAPI.Results;
+using AllowAnonymousAttribute = System.Web.Http.AllowAnonymousAttribute;
+using AuthorizeAttribute = System.Web.Http.AuthorizeAttribute;
+using OverrideAuthenticationAttribute = System.Web.Http.OverrideAuthenticationAttribute;
+using RouteAttribute = System.Web.Http.RouteAttribute;
+using RoutePrefixAttribute = System.Web.Http.RoutePrefixAttribute;
 
 namespace OnlineMarketPlace.WebAPI.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
+   
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager,
+        public AccountController(ApplicationUserManager userManager, ApplicationRoleManager roleManager,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
         {
             UserManager = userManager;
+            RoleManager = roleManager;
             AccessTokenFormat = accessTokenFormat;
+        }
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? Request.GetOwinContext().Get<ApplicationRoleManager>();
+                
+            }
+            private set
+            {
+                _roleManager = value;
+            }
         }
 
         public ApplicationUserManager UserManager
@@ -51,7 +72,10 @@ namespace OnlineMarketPlace.WebAPI.Controllers
         }
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("UserInfo")]
@@ -66,7 +90,10 @@ namespace OnlineMarketPlace.WebAPI.Controllers
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         // POST api/Account/Logout
         [Route("Logout")]
         public IHttpActionResult Logout()
@@ -74,7 +101,12 @@ namespace OnlineMarketPlace.WebAPI.Controllers
             Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
             return Ok();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <param name="generateState"></param>
+        /// <returns></returns>
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
@@ -114,7 +146,11 @@ namespace OnlineMarketPlace.WebAPI.Controllers
                 ExternalLoginProviders = GetExternalLogins(returnUrl, generateState)
             };
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         // POST api/Account/ChangePassword
         [Route("ChangePassword")]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
@@ -134,7 +170,11 @@ namespace OnlineMarketPlace.WebAPI.Controllers
 
             return Ok();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         // POST api/Account/SetPassword
         [Route("SetPassword")]
         public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
@@ -153,7 +193,11 @@ namespace OnlineMarketPlace.WebAPI.Controllers
 
             return Ok();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         // POST api/Account/AddExternalLogin
         [Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
@@ -191,7 +235,11 @@ namespace OnlineMarketPlace.WebAPI.Controllers
 
             return Ok();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         // POST api/Account/RemoveLogin
         [Route("RemoveLogin")]
         public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model)
@@ -220,7 +268,12 @@ namespace OnlineMarketPlace.WebAPI.Controllers
 
             return Ok();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
         // GET api/Account/ExternalLogin
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
@@ -277,7 +330,12 @@ namespace OnlineMarketPlace.WebAPI.Controllers
 
             return Ok();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <param name="generateState"></param>
+        /// <returns></returns>
         // GET api/Account/ExternalLogins?returnUrl=%2F&generateState=true
         [AllowAnonymous]
         [Route("ExternalLogins")]
@@ -318,7 +376,12 @@ namespace OnlineMarketPlace.WebAPI.Controllers
 
             return logins;
         }
-
+      
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
@@ -337,10 +400,14 @@ namespace OnlineMarketPlace.WebAPI.Controllers
             {
                 return GetErrorResult(result);
             }
-
+            result = await UserManager.AddToRolesAsync(user.Id, model.RoleName);
             return Ok();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
